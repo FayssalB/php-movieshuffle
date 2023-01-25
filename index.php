@@ -1,16 +1,27 @@
 <?php
-$json = file_get_contents("movies.json");
 
-$tab_movies = json_decode($json, true);
+$find = false;
+////CHANGEMENT ICI 
+$dsn = "mysql:host=localhost;dbname=movieshuffle";
+$db = new PDO($dsn, "root", "");
+
+$query = $db->query("SELECT * FROM movieslist");
+
+$movies = $query->fetchAll(PDO::FETCH_ASSOC);
 
 include("templates/header.php");
+
+if(@$tab){
+    $movies = $tab;
+}
+
 ?>
 
 
 
 <div class="container">
     <?php
-    foreach ($tab_movies as $movie) {
+    foreach ($movies as $movie) {
         $test = str_replace(" ", "-", $movie["title"]);
         $test1 = strtolower($test);
     ?>
@@ -20,11 +31,10 @@ include("templates/header.php");
                 <img src="./img\poster/<?= $test1 ?>.jpg" alt="">
                 <div class="poster-legend">
                     <h3><?= $movie["title"] ?></h3>
-                    <p><?= implode(", ", $movie["genres"]) ?></p>
+                    <p><?= $movie["genre"]?></p>
                 </div>
             </a>
         </div>
-
 
 
     <?php
