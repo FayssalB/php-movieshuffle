@@ -28,7 +28,7 @@
         input.active{
             width: 160px;
             border-bottom: 2px solid black;
-            transition: width 2s;
+            transition: width 1.5s ;
         }
         input:focus {
             outline:none;
@@ -65,10 +65,14 @@
 
 .pagination-container{
     width: 100%;
-    height: 60px;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .pagination-test{
+        display: block;
+    }
     .pagination-link{
         width: 39px;
         height: 39px;

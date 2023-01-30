@@ -4,6 +4,7 @@ $db = new PDO($dsn, "root", "");
 
 $data = array("name" => "Recette introuvable");
 
+$tab = array();
 @$keywords = $_GET["keywords"];
 @$valider = $_GET["valider"];
 
@@ -12,11 +13,6 @@ if (!empty($keywords)) {
     $query->execute();
     $tab = $query->fetchAll(PDO::FETCH_ASSOC);
     var_dump($tab);
-    
-    $nombre_element_par_page=3;
-    $nombre_pages = ceil(count($tab)/$nombre_element_par_page);
-    echo $nombre_pages;
-
 
 }
 
@@ -32,6 +28,7 @@ if (!empty($keywords)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <script src="index.js" defer></script>
     <title>Movie3000</title>
 </head>
 
@@ -49,6 +46,7 @@ if (!empty($keywords)) {
             </form>
 
         </div>
+
     </div>
 
     
